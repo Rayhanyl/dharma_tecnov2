@@ -31,7 +31,7 @@
                     @endif
                 @else
                     <div class="col-12 d-flex justify-content-center">
-                        <a href="#" class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Lamar</a>
+                        <a href="{{ route ('applicant.lamaran.page') }}" class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Lamar</a>
                     </div>
                 @endif
             </div>

@@ -42,5 +42,8 @@ Route::middleware('auth')->group(function () {
     });
     Route::prefix('/applicant')->name('applicant.')->controller(ApplicantController::class)->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');
+        Route::get('/lamaran', 'showLamaranPage')->name('lamaran.page');
+        Route::get('/status/lamaran', 'showStatusPage')->name('status.page');
+        Route::post('/store/data/lamaran', 'storeLamaran')->name('store.lamaran.process');
     });
 });
