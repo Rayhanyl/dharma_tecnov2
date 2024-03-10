@@ -51,20 +51,6 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="#">
-                                                <i class="fas fa-table opacity-6 text-dark me-1"></i>
-                                                Data Calon Pelamar
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="#">
-                                                <i class="fas fa-table opacity-6 text-dark me-1"></i>
-                                                Histori Data Pelamar
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                                 href="{{ route('admin.manage.user.page') }}">
                                                 <i class="fas fa-user opacity-6 text-dark me-1"></i>
                                                 Manage User

@@ -33,12 +33,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/manage/user', 'showManageUser')->name('manage.user.page');
         Route::get('/add/user', 'showAddUser')->name('add.user.page');
         Route::post('/create/user', 'createUser')->name('create.user.process');
-    }); 
+    });
     Route::prefix('/general')->name('general.')->controller(GeneralController::class)->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');
     });
     Route::prefix('/recruiter')->name('recruiter.')->controller(RecruiterController::class)->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');
+        Route::get('/list/pelamar', 'showListPelamarPage')->name('list.pelamar.page');
+        Route::get('/schedule/interview', 'showScheduleInterviewPage')->name('schedule.interview.page');
+        Route::get('/modal/approval', 'modalApproval')->name('ajax.modal.approval');
+        Route::post('/update/approval', 'updateApproval')->name('update.approval');
+        Route::post('/update/schedule/{id}', 'updateSchedule')->name('update.schedule');
+        Route::get('/modal/approval/{application}', 'modalApproval')->name('ajax.modal.approval');
     });
     Route::prefix('/applicant')->name('applicant.')->controller(ApplicantController::class)->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');

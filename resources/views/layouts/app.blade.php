@@ -106,9 +106,9 @@
             damping: '0.5'
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    } <
-    script async defer src = "https://buttons.github.io/buttons.js" >
+    }
 </script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.7') }}"></script>
 @include('sweetalert::alert')
 @stack('script')
