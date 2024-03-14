@@ -51,6 +51,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');
         Route::get('/lamaran', 'showLamaranPage')->name('lamaran.page');
         Route::get('/status/lamaran', 'showStatusPage')->name('status.page');
+        Route::get('/account/page', 'showAccountPage')->name('account.page');
+        Route::post('/update/data/user', 'updateDataUserProcess')->name('update.user.process');
         Route::post('/store/data/lamaran', 'storeLamaran')->name('store.lamaran.process');
     });
 });

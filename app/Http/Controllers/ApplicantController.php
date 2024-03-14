@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Position;
 use App\Models\Education;
 use App\Models\Application;
@@ -9,6 +10,7 @@ use App\Models\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreApplicationRequest;
 use App\Http\Requests\UpdateApplicationRequest;
 
@@ -30,6 +32,51 @@ class ApplicantController extends Controller
     {
         $application = Application::whereUserId(Auth::user()->id)->latest('id')->first();
         return view('applicant.status', compact('application'));
+    }
+
+    public function showAccountPage()
+    {
+        return view('applicant.account');
+    }
+
+    public function updateDataUserProcess(Request $request)
+    {
+        try {
+            $user = Auth::user();
+
+            // Validation rules
+            $rules = [
+                'password' => 'nullable|min:6|confirmed',
+            ];
+
+            // Validation messages
+            $messages = [
+                'password.confirmed' => 'The password confirmation does not match.',
+            ];
+
+            // Validate the request
+            $validator = Validator::make($request->all(), $rules, $messages);
+            // Check for validation failure
+            if ($validator->fails()) {
+                Alert::toast('Error', 'warning');
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            // Update user data
+            User::where('id', $user->id)->update([
+                'first_name' => $request->nama_depan,
+                'last_name' => $request->nama_belakang,
+                'email' => $request->email,
+                'phone_number' => $request->phone,
+                'password' => bcrypt($request->password), // Hash the password
+            ]);
+
+            Alert::toast('Profil berhasil di update', 'success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            Alert::warning('Error', 'Contact Developer to Fix This');
+            return redirect()->back();
+        }
     }
 
     public function storeLamaran(Request $request)

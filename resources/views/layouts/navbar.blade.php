@@ -6,7 +6,7 @@
                     class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid pe-0">
                         <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-uppercase" href="#">
-                            {{ Auth::user()->role ?? '' }}
+                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name ?? '' }}
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -30,13 +30,13 @@
                                     <li class="nav-item">
                                         <a class="nav-link me-2" href="{{ route('auth.login.page') }}">
                                             <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                                            Masuk
+                                            Sing In
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link me-2" href="{{ route('auth.register.page') }}">
                                             <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                            Mendaftar
+                                            Sing Up
                                         </a>
                                     </li>
                                 @endguest
@@ -59,21 +59,21 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route ('recruiter.applicant.data.page') }}">
+                                                href="{{ route('recruiter.applicant.data.page') }}">
                                                 <i class="fas fa-table opacity-6 text-dark me-1"></i>
                                                 Applicant data
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route ('recruiter.applicant.history.page') }}">
+                                                href="{{ route('recruiter.applicant.history.page') }}">
                                                 <i class="fas fa-table opacity-6 text-dark me-1"></i>
                                                 Applicant history
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route ('recruiter.manage.user.page') }}">
+                                                href="{{ route('recruiter.manage.user.page') }}">
                                                 <i class="fas fa-user opacity-6 text-dark me-1"></i>
                                                 Manage user
                                             </a>
@@ -90,7 +90,13 @@
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                                 href="{{ route('applicant.status.page') }}">
                                                 <i class="fas fa-info-circle opacity-6 text-dark me-1"></i>
-                                                Status Lamaran
+                                                Application Status
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link me-2" href="{{ route('applicant.account.page') }}">
+                                                <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
+                                                Account
                                             </a>
                                         </li>
                                     @endif
