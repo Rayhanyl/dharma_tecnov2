@@ -29,7 +29,7 @@ class ApplicantController extends Controller
     public function showStatusPage()
     {
         $application = Application::whereUserId(Auth::user()->id)->latest('id')->first();
-        return view('applicant.status',compact('application'));
+        return view('applicant.status', compact('application'));
     }
 
     public function storeLamaran(Request $request)

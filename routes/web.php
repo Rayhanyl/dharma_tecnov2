@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     LandingPageController,
     AuthenticationController,
-    AdminController,
     GeneralController,
     RecruiterController,
     ApplicantController,
@@ -28,23 +27,25 @@ Route::post('/auth/process/register', [AuthenticationController::class, 'storeRe
 Route::get('/auth/process/logout', [AuthenticationController::class, 'logout'])->name('logout.process');
 
 Route::middleware('auth')->group(function () {
-    Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function () {
-        Route::get('/index', 'showIndexPage')->name('index.page');
-        Route::get('/manage/user', 'showManageUser')->name('manage.user.page');
-        Route::get('/add/user', 'showAddUser')->name('add.user.page');
-        Route::post('/create/user', 'createUser')->name('create.user.process');
-    });
     Route::prefix('/general')->name('general.')->controller(GeneralController::class)->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');
+        Route::get('/general/detail/applicant/{id}', 'detailApplicant')->name('detail.applicant.page');
     });
     Route::prefix('/recruiter')->name('recruiter.')->controller(RecruiterController::class)->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');
-        Route::get('/list/pelamar', 'showListPelamarPage')->name('list.pelamar.page');
-        Route::get('/schedule/interview', 'showScheduleInterviewPage')->name('schedule.interview.page');
-        Route::get('/modal/approval', 'modalApproval')->name('ajax.modal.approval');
-        Route::post('/update/approval', 'updateApproval')->name('update.approval');
-        Route::post('/update/schedule/{id}', 'updateSchedule')->name('update.schedule');
+        Route::get('/list/data/applicant', 'showApplicantDataPage')->name('applicant.data.page');
+        Route::get('/list/history/applicant', 'showApplicantHistoryPage')->name('applicant.history.page');
+        Route::get('/list/manage/user', 'showManageUserPage')->name('manage.user.page');
+        Route::get('/create/user', 'showCreateUserPage')->name('create.user.page');
+        Route::get('/edit/user/{id}', 'showEditUserPage')->name('edit.user.page');
+        Route::get('/edit/schedule/{id}', 'showSchedulePage')->name('schedule.page');
         Route::get('/modal/approval/{application}', 'modalApproval')->name('ajax.modal.approval');
+        Route::get('/delete/user/{id}', 'deleteUserProcess')->name('delete.user');
+        Route::get('/detail/data/applicant/{id}', 'showDetailDataApplicant')->name('detail.data.applicant');
+        Route::post('/create/user/process', 'storeUserProcess')->name('store.user');
+        Route::post('/update/user/process', 'updateUserProcess')->name('update.user');
+        Route::post('/update/approval', 'updateApproval')->name('update.approval');
+        Route::post('/update/schedule', 'updateSchedule')->name('update.schedule');
     });
     Route::prefix('/applicant')->name('applicant.')->controller(ApplicantController::class)->group(function () {
         Route::get('/index', 'showIndexPage')->name('index.page');

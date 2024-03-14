@@ -28,16 +28,24 @@
                                 Anda telah diterima
                             </h4>
                         </div>
+                    @else
+                        <div class="col-12 d-flex justify-content-center">
+                            <a href="{{ route('applicant.lamaran.page') }}"
+                                class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">
+                                Lamar
+                            </a>
+                        </div>
                     @endif
                 @else
                     <div class="col-12 d-flex justify-content-center">
-                        <a href="{{ route ('applicant.lamaran.page') }}" class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Lamar</a>
+                        <a href="{{ route('applicant.lamaran.page') }}"
+                            class="btn bg-gradient-info w-50 mt-4 mb-0 shadow">Lamar</a>
                     </div>
                 @endif
             </div>
             @if ($data)
                 @if ($data->status == 'interviewed')
-                    <div class="col-12 row d-flex justify-content-center my-2">
+                    <div class="col-12 row d-flex justify-content-center my-3">
                         <div class="col-12 col-lg-8">
                             <div class="card rounded-4 shadow">
                                 <div class="card-body">

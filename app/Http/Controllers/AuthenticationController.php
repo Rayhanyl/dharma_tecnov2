@@ -30,9 +30,7 @@ class AuthenticationController extends Controller
                 'role'  => Auth::user()->role,
             ]);
             Alert::toast('Berhasil login', 'success');
-            if (session('role') === 'admin') {
-                return redirect()->route('admin.index.page');
-            }elseif (session('role') === 'general') {
+            if (session('role') === 'general') {
                 return redirect()->route('general.index.page');
             }elseif (session('role') === 'recruiter') {
                 return redirect()->route('recruiter.index.page');

@@ -1,4 +1,4 @@
-<form action="{{ route('update.approval') }}" method="POST" id="form-approval">
+<form action="{{ route('recruiter.update.approval') }}" method="POST" id="form-approval">
     @csrf
     @foreach ($data as $item)
         <input type="hidden" name="idApplication" value="{{ $item->id }}">
@@ -11,7 +11,7 @@
                     @if ($item->status === 'processed')
                         <option value="interviewed">Interview</option>
                     @else
-                        <option value="accepted">Lamaran Diterima</option>
+                        <option value="accepted">Passed the Selection</option>
                     @endif
                     <option value="rejected">Rejected</option>
                 @endforeach

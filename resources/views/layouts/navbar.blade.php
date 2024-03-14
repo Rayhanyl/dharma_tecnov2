@@ -24,39 +24,24 @@
                                         <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                             href="{{ route('landing.page') }}">
                                             <i class="fa fa-home opacity-6 text-dark me-1"></i>
-                                            Home
+                                            Home page
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link me-2" href="{{ route('auth.login.page') }}">
                                             <i class="fas fa-key opacity-6 text-dark me-1"></i>
-                                            Sign In
+                                            Masuk
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link me-2" href="{{ route('auth.register.page') }}">
                                             <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                            Sign Up
+                                            Mendaftar
                                         </a>
                                     </li>
                                 @endguest
                                 @auth
-                                    @if (session('role') === 'admin')
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route('admin.index.page') }}">
-                                                <i class="fas fa-desktop opacity-6 text-dark me-1"></i>
-                                                Dashboard
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route('admin.manage.user.page') }}">
-                                                <i class="fas fa-user opacity-6 text-dark me-1"></i>
-                                                Manage User
-                                            </a>
-                                        </li>
-                                    @elseif (session('role') === 'general')
+                                    @if (session('role') === 'general')
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                                 href="{{ route('general.index.page') }}">
@@ -74,23 +59,23 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route('recruiter.index.page') }}">
+                                                href="{{ route ('recruiter.applicant.data.page') }}">
                                                 <i class="fas fa-table opacity-6 text-dark me-1"></i>
-                                                Data Calon Pelamar
+                                                Applicant data
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route('recruiter.index.page') }}">
+                                                href="{{ route ('recruiter.applicant.history.page') }}">
                                                 <i class="fas fa-table opacity-6 text-dark me-1"></i>
-                                                Data Interview Pelamar
+                                                Applicant history
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                                href="{{ route('recruiter.index.page') }}">
-                                                <i class="fas fa-table opacity-6 text-dark me-1"></i>
-                                                Histori Data Pelamar
+                                                href="{{ route ('recruiter.manage.user.page') }}">
+                                                <i class="fas fa-user opacity-6 text-dark me-1"></i>
+                                                Manage user
                                             </a>
                                         </li>
                                     @else
@@ -112,7 +97,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link me-2" href="{{ route('logout.process') }}">
                                             <i class="fas fa-sign-out-alt opacity-6 text-dark me-1"></i>
-                                            Log Out
+                                            Log out
                                         </a>
                                     </li>
                                 @endauth
